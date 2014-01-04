@@ -9,7 +9,7 @@ install:
 - "bin/cached-bundle install --deployment --retry 3 --jobs 4"
 - sudo apt-get update && sudo apt-get install git
 after_success: bundle exec rake publish_build
-script: rake test\[$TEST_SUITE]
+script: bundle exec rake test\[$TEST_SUITE]
 notifications:
   campfire:
     rooms:
