@@ -1301,8 +1301,7 @@ QUnit.asyncTest('Events are triggered on the current state when defined in `acti
     actions: {
       showStuff(obj) {
         ok(this instanceof App.HomeRoute, 'the handler is an App.HomeRoute');
-        // Using Ember.copy removes any private Ember vars which older IE would be confused by
-        deepEqual(Ember.copy(obj, true), { name: 'Tom Dale' }, 'the context is correct');
+        deepEqual(obj, { name: 'Tom Dale' }, 'the context is correct');
         QUnit.start();
       }
     }
@@ -1333,8 +1332,7 @@ QUnit.asyncTest('Events defined in `actions` object are triggered on the current
     actions: {
       showStuff(obj) {
         ok(this instanceof App.RootRoute, 'the handler is an App.HomeRoute');
-        // Using Ember.copy removes any private Ember vars which older IE would be confused by
-        deepEqual(Ember.copy(obj, true), { name: 'Tom Dale' }, 'the context is correct');
+        deepEqual(obj, { name: 'Tom Dale' }, 'the context is correct');
         QUnit.start();
       }
     }
@@ -1453,9 +1451,8 @@ QUnit.asyncTest('actions can be triggered with multiple arguments', function() {
     actions: {
       showStuff(obj1, obj2) {
         ok(this instanceof App.RootRoute, 'the handler is an App.HomeRoute');
-        // Using Ember.copy removes any private Ember vars which older IE would be confused by
-        deepEqual(Ember.copy(obj1, true), { name: 'Tilde' }, 'the first context is correct');
-        deepEqual(Ember.copy(obj2, true), { name: 'Tom Dale' }, 'the second context is correct');
+        deepEqual(obj1, { name: 'Tilde' }, 'the first context is correct');
+        deepEqual(obj2, { name: 'Tom Dale' }, 'the second context is correct');
         QUnit.start();
       }
     }
