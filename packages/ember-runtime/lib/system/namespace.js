@@ -141,8 +141,7 @@ function findNamespaces() {
     // Only process entities that start with uppercase A-Z
     if (!STARTS_WITH_UPPERCASE.test(prop)) { continue; }
 
-    // Unfortunately, some versions of IE don't support window.hasOwnProperty
-    if (lookup.hasOwnProperty && !lookup.hasOwnProperty(prop)) { continue; }
+    if (!lookup.hasOwnProperty(prop)) { continue; }
 
     // At times we are not allowed to access certain properties for security reasons.
     // There are also times where even if we can access them, we are not allowed to access their properties.
