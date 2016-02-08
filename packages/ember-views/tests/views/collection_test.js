@@ -7,7 +7,6 @@ import jQuery from 'ember-views/system/jquery';
 import CollectionView, { DeprecatedCollectionView } from 'ember-views/views/collection_view';
 import View from 'ember-views/views/view';
 import compile from 'ember-template-compiler/system/compile';
-import getElementStyle from 'ember-views/tests/test-helpers/get-element-style';
 import { A as emberA } from 'ember-runtime/system/native_array';
 
 import { registerKeyword, resetKeyword } from 'ember-htmlbars/tests/utils';
@@ -664,9 +663,9 @@ QUnit.test('Collection with style attribute supports changing content', function
     view.appendTo('#qunit-fixture');
   });
 
-  var style = getElementStyle(view.element);
+  var style = view.element.getAttribute('style');
 
-  equal(style, 'WIDTH: 100PX;', 'width is applied to the element');
+  equal(style, 'width: 100px;', 'width is applied to the element');
 
   run(function() {
     view.get('content').pushObject('baz');

@@ -7,7 +7,6 @@ import jQuery from 'ember-views/system/jquery';
 import View from 'ember-views/views/view';
 import ContainerView, { DeprecatedContainerView } from 'ember-views/views/container_view';
 import compile from 'ember-template-compiler/system/compile';
-import getElementStyle from 'ember-views/tests/test-helpers/get-element-style';
 import buildOwner from 'container/tests/test-helpers/build-owner';
 import { getOwner, OWNER } from 'container/owner';
 
@@ -770,13 +769,13 @@ QUnit.test('ContainerView supports bound style attribute', function() {
     container.appendTo('#qunit-fixture');
   });
 
-  equal(getElementStyle(container.element), 'WIDTH: 100PX;', 'width is applied to the element');
+  equal(container.element.getAttribute('style'), 'width: 100px;', 'width is applied to the element');
 
   run(function() {
     container.set('style', 'width: 200px;');
   });
 
-  equal(getElementStyle(container.element), 'WIDTH: 200PX;', 'width is applied to the element');
+  equal(container.element.getAttribute('style'), 'width: 200px;', 'width is applied to the element');
 });
 
 QUnit.test('ContainerView supports changing children with style attribute', function() {
@@ -789,7 +788,7 @@ QUnit.test('ContainerView supports changing children with style attribute', func
     container.appendTo('#qunit-fixture');
   });
 
-  equal(getElementStyle(container.element), 'WIDTH: 100PX;', 'width is applied to the element');
+  equal(container.element.getAttribute('style'), 'width: 100px;', 'width is applied to the element');
 
   view = View.create();
 
